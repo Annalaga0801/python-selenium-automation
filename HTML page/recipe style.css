@@ -1,0 +1,30 @@
+body {
+    background-size: cover; background-image: url("cooking-class-bg.jpg");
+    }
+
+div.header {
+    font-size: medium;
+    font-style: italic;
+    padding-left: 20px;
+    color: darkgreen;
+  }
+
+h3 {
+    color: orangered;
+}
+div.list {
+    font-size: large;
+    padding-left: 80px;
+    color: orangered;
+}
+
+div.preparation {
+    padding-top: 50px;
+    padding-left: 20px;
+    font-style: italic;
+    color: darkgreen;
+}
+
+
+
+
