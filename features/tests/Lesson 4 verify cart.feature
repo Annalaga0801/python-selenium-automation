@@ -9,4 +9,4 @@ Feature: Amazon cart
     And Click Add to cart button
     And Open Cart page
     Then Verify cart has 1 item
-    #And Verify cart has correct item
+    And Verify cart has correct item

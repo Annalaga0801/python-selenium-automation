@@ -4,11 +4,13 @@ from time import sleep
 
 ADD_CART_BTN = (By.ID, 'add-to-cart-button')
 PRODUCT_NAME = (By.ID, 'productTitle')
-SEARCH_INPUT = (By.ID, 'twotabsearchtextbox')
+SEARCH_INPUT_MAIN = (By.ID, 'twotabsearchtextbox')
+SEARCH_INPUT_HELP = (By.ID, 'hubHelpSearchInput')
 SEARCH_BTN = (By.ID, 'nav-search-submit-button')
 SEARCH_RESULT_TEXT = (By.XPATH, "//span[@class='a-color-state a-text-bold']")
 PRODUCT_PRICE = (By.XPATH, "//div[@data-component-type='s-search-result']//a[.//span[@class='a-price']]")
 CART_PAGE = (By.ID, 'nav-cart-count')
+CART_ITEM = (By.XPATH, "//span[@class='a-truncate-cut']")
 
 
 @given('Open Amazon page')
@@ -18,7 +20,7 @@ def open_amazon(context):
 
 @when('Search for {search_word}')
 def search_amazon(context, search_word):
-    context.driver.find_element(*SEARCH_INPUT).send_keys(search_word)
+    context.driver.find_element(*SEARCH_INPUT_MAIN).send_keys(search_word)
     context.driver.find_element(*SEARCH_BTN).click()
 
 
@@ -49,5 +51,9 @@ def verify_cart_count(context, expected_count):
     assert expected_count == actual_text, f'Expected {expected_count}, but got {actual_text}'
 
 
+@when('Verify cart has correct item')
+def verify_correct_item(context, expected_item):
+    actual_result = context.driver.find_element(*CART_ITEM).text
+    assert expected_item == actual_result, f'Expected {expected_item}, but got {actual_result}'
 
 
